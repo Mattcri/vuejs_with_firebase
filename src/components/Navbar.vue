@@ -15,7 +15,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li v-if="!currentUser" class="nav-item">
           <router-link to="/">Home</router-link>
           </li>
           <li class="nav-item">

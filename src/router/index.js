@@ -21,6 +21,12 @@ Vue.use(VueRouter)
     meta: {
       login: true
     }
+  },
+  {
+    path: '/*',
+    name: 'NotFound',
+    redirect: '/'
+    // component: () => import(/* webpackChunkName: "notfound" */ '../views/NotFound.vue')
   }
 ]
 
