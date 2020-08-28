@@ -2,11 +2,21 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import firebase from 'firebase'
+import firebaseConfig from '../config/firebase'
 
+firebase.initializeApp(firebaseConfig) //iniciamos la app
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+let app
+firebase.auth().onAuthStateChanged(() => { //si hay refresh, guarda las credenciales del usuario
+  if(!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+
+  }
+})
+
